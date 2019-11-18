@@ -1,0 +1,2 @@
+include ':moshiextensions', ':testapp'
+rootProject.name='Moshi Extensions'
