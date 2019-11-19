@@ -1,13 +1,11 @@
 name: Android Build
 
 on: 
+  pull_request:
   push:
     branches-ignore: 
       - master
-  pull_request:
-    branches-ignore: 
-      - master
-
+  
 jobs:
   build:
 
