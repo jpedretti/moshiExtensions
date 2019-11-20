@@ -1,6 +1,34 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    libraryVersion = '1.0.0'
+
+    bintrayRepo = "MoshiExtensions"
+    bintrayName = "com.rjpsoft.moshiextensions"
+
+    libraryName = 'moshiextensions'
+
+    publishedGroupId = 'com.rjpsoft.moshiextensions'
+    artifact = 'moshiextensions'
+
+    libraryDescription = 'A set of extension functions to make easier to serialize and deserialize objects using Moshi.'
+    siteUrl = 'https://github.com/jpedretti/moshiExtensions'
+    gitUrl = 'https://github.com/jpedretti/moshiExtensions.git'
+
+    def file = project.rootProject.file('local.properties')
+    bintrayUser = System.getenv('BINTRAY_USER')
+    bintrayApiKey = System.getenv('BINTRAY_API_KEY')
+    if (file.exists()) {
+        Properties properties = new Properties()
+        properties.load(file.newDataInputStream())
+        bintrayUser = properties.getProperty('bintrayUser', '')
+        bintrayApiKey = properties.getProperty('bintrayApiKey', '')
+    }
+}
 
 android {
     compileSdkVersion 29
@@ -14,7 +42,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,4 +60,5 @@ dependencies {
 }
 
 
-apply from: 'publish.gradle'
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
