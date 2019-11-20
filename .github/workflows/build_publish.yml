@@ -16,8 +16,8 @@ jobs:
       with:
         java-version: 1.8
    
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Create Artifacts
+      run: ./gradlew install
       
-    - name: Unit Tests
-      run: ./gradlew test --continue
+    - name: Publish To Bintray
+      run: ./gradlew bintrayUpload
