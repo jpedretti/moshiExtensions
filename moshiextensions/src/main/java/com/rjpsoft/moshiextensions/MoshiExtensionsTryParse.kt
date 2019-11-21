@@ -52,3 +52,25 @@ inline fun <reified T> Moshi.tryParse(reader: JsonReader): T? = try {
 } catch (ise: IllegalStateException) {
     null
 }
+
+/**
+* Tries to create a JSON string from the given value
+* @receiver Moshi
+* @param value T
+* @return String?
+*/
+inline fun <reified T> Moshi.tryParse(value: T) = try {
+    toJson(value)
+}catch (jde: JsonDataException) {
+    null
+} catch (ioe: IOException) {
+    null
+} catch (iae: IllegalArgumentException) {
+    null
+} catch (jee: JsonEncodingException) {
+    null
+} catch (eoe: EOFException) {
+    null
+} catch (ise: IllegalStateException) {
+    null
+}
