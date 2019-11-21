@@ -5,7 +5,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 ext {
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     bintrayRepo = "MoshiExtensions"
     bintrayName = "com.rjpsoft.moshiextensions"
